@@ -48,7 +48,7 @@ Node_Express_Redis_Session
 	  }
 	
 	  // 2. 取出Session值
-	  redis_session.get(session_id, function(err, rst) {
+	  redis_session.get(req.cookies[session_id], function(err, rst) {
 	    if (!rst) 
 	      req.session = {};
 	    else
