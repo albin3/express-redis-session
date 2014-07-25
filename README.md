@@ -20,7 +20,7 @@ Node_Express_Redis_Session
 ###使用
 
 	var express = require('express');
-	var redis_session = require('./index').redis_session;
+	var redis_session = require('./lib/').redis_session;
 	var app     = express();
 	
 	app.use(...);
@@ -35,7 +35,7 @@ Node_Express_Redis_Session
 ###具体实现
 
 	// MiddleWare: 序列化反序列化到Redis中
-	exports.mysession = function(req, res, next) {
+	exports.redis_session = function(req, res, next) {
 	
 	  // 1. 产生唯一session_id
 	  var session_id = 'session_id';
