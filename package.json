@@ -1,7 +1,7 @@
 {
   "name": "node-redis-session",
   "version": "0.0.0",
-  "description": "express midware save session in redis",
+  "description": "express middleware to save session with redis",
   "main": "./lib/index",
   "dependencies": {
     "express": "~3.4.8",
@@ -17,5 +17,16 @@
     "session"
   ],
   "author": "Albin. Zeng",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "node test/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/albin3/Node_Express_Redis_Session.git"
+  },
+  "bugs": {
+    "url": "https://github.com/albin3/Node_Express_Redis_Session/issues"
+  },
+  "homepage": "https://github.com/albin3/Node_Express_Redis_Session"
 }
