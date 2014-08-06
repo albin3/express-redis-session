@@ -1,6 +1,9 @@
 Node_Express_Redis_Session
 ==========================
 
+###使用
+	npm install node-redis-session
+
 ###简介
 
 > 将`Session`存储在缓存中，在web服务中有诸多的优势，比如重启服务时`Session`不丢失，分布式部署web服务器时负载均衡的时候不用考虑`状态一致`的问题。
