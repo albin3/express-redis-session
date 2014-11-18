@@ -2,3 +2,4 @@
 /test/
 /static/
 npm-debug.log
+*.rdb
