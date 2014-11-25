@@ -4,7 +4,6 @@
   "description": "express middleware to save session with redis",
   "main": "./lib/index",
   "dependencies": {
-    "node_hash": "~0.2.0",
     "redis": "~0.11.0"
   },
   "devDependencies": {
