@@ -17,7 +17,7 @@
   "author": "Albin Zeng",
   "license": "MIT",
   "scripts": {
-    "test": "node test/test"
+    "test": "mocha test/test-node-redis-session.js"
   },
   "repository": {
     "type": "git",
