@@ -1,5 +1,4 @@
 /node_modules/
-/test/
 /static/
 npm-debug.log
 *.rdb
