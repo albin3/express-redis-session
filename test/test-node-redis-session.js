@@ -1,11 +1,11 @@
 //test case
 var assert = require('assert');
-var nodeRedisSession = require('../');
+var redisSession = require('../');
 var express = require('./miniExpress');
 var http = require('http');
 
 var app = express();
-app.use(nodeRedisSession.get_redis_session("default"));
+app.use(redisSession({ redisOptions: [6379, 'localhost', {}], cookieName: 'sid#test', expireTime: 24*3600*1000 }));
 app.use(function(req, res) {
   if (req.session)
     res.write(JSON.stringify(req.session));
@@ -15,20 +15,20 @@ app.use(function(req, res) {
 });
 app.listen(3009);
 
+//用于比较两次返回的Session，prev为上次设置的Session，current为本次获得的Session
+var prev = '';
+var current = '';
+var setCookie;
+
 describe('#nodeRedisSession', function(){
-
-  //用于比较两次返回的Session，prev为上次设置的Session，current为本次获得的Session
-  var prev = '';
-  var current = '';
-  var setCookie;
-
-  describe('#first request', function() {
+  it('first request', function(firstDone) {
     http.request({
       hostname: 'localhost',
       port: 3009,
       path: '/',
       method: 'GET'
     }, function(res) {
+      firstDone();
       describe('#getFirstResponse', function() {
         it('statusCode should be 200.', function() {
           assert.equal(res.statusCode, 200);
@@ -76,8 +76,8 @@ describe('#nodeRedisSession', function(){
                   })
                 })
                 res.on('data', function(chunk) {
+                  var current = chunk.toString().split(';')[0];
                   describe('#response data check', function() {
-                    var current = chunk.toString().split(';')[0];
                     it('prev session SHOULD EQUAL current session', function() {
                       assert(prev, current);
                     });
