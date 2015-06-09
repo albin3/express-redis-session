@@ -5,8 +5,7 @@ var express = require('./miniExpress');
 var http = require('http');
 
 var app = express();
-app.use(redisSession());
-//app.use(redisSession({ redisOptions: [6379, 'localhost', {}], cookieName: 'sid#test', expireTime: 24*3600*1000 }));
+app.use(redisSession({ redisOptions: [6379, 'localhost', {}], cookieName: 'sid#test', expireTime: 24*3600*1000 }));
 app.use(function(req, res) {
   if (req.session)
     res.write(JSON.stringify(req.session));

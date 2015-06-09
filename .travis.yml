@@ -10,3 +10,5 @@ node_js:
 scripts: {
   "test": "mocha "
   }
+services:
+  - redis-server
