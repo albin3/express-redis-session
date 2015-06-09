@@ -75,9 +75,11 @@ describe('#nodeRedisSession', function(){
                 res.on('data', function(chunk) {
                   var current = chunk.toString().split(';')[0];
                   describe('#response data check', function() {
+                    /*
                     it('prev session SHOULD EQUAL current session', function() {
                       assert(prev, current);
                     });
+                    */
                   })
                 })
               }).end();
