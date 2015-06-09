@@ -1,5 +1,6 @@
 Node_Express_Redis_Session
 ==========================
+[![Build Status](https://travis-ci.org/albin3/Node_Express_Redis_Session.svg?branch=master)](https://travis-ci.org/albin3/Node_Express_Redis_Session)
 
 ###使用
 	npm install node-redis-session
