@@ -22,7 +22,7 @@ describe('#nodeRedisSession', function(){
   var current = '';
   var setCookie;
 
-  describe('#first request', function(){
+  describe('#first request', function() {
     http.request({
       hostname: 'localhost',
       port: 3009,
@@ -50,12 +50,12 @@ describe('#nodeRedisSession', function(){
           })
           it('check prev', function() {
             assert(typeof prev, 'string');
+            var cookie = '';
+            for (var i=0; i<setCookie.length; i++) {
+              cookie += setCookie[i]+';';
+            }
+            cookie = cookie.slice(0,-1);
             describe('#secondRequest', function() {
-              var cookie = '';
-              for (var i=0; i<setCookie.length; i++) {
-                cookie += setCookie[i]+';';
-              }
-              cookie = cookie.slice(0,-1);
               http.request({
                 hostname: 'localhost',
                 port: 3009,
@@ -84,8 +84,9 @@ describe('#nodeRedisSession', function(){
                   })
                 })
               }).end();
-              it('second request sent.', function() {
+              it('second request sent.', function(done) {
                 this.timeout(500);
+                setTimeout(done, 200);
               })
             })
           })
