@@ -43,12 +43,9 @@ describe('#nodeRedisSession', function(){
       });
       res.on('data', function(chunk) {
         describe('#firstRequestGetData', function() {
-          it('data should not null', function() {
-            this.timeout(500);
+          it('check prev', function() {
             var data = chunk.toString();
             prev = data.split(';')[1];
-          })
-          it('check prev', function() {
             assert(typeof prev, 'string');
             var cookie = '';
             for (var i=0; i<setCookie.length; i++) {

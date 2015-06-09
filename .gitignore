@@ -2,3 +2,4 @@
 /static/
 npm-debug.log
 *.rdb
+*.swp
