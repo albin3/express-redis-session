@@ -7,12 +7,13 @@ This is a node Express middleware to store session into redis.
 Install with:
 
 ```sh
-	$npm install node-redis-session
+$npm install node-redis-session
 ```
 
 ## Usage
 
 ```js
+
 	var express = require('express');
 	var cookieParser = require('cookie-parser');
 	var redisSession = require('node-redis-session');
@@ -39,6 +40,12 @@ Session will be store in redis, as JSON.stringify(req.session). You can find it 
 Other way to establish a redisSession is: 
 
 ```js
+
+	var express = require('express');
+	var cookieParser = require('cookie-parser');
+	var redisSession = require('node-redis-session');
+	var app = express();
+
 	app.use(cookieParser());
 	app.use(redisSession({ cookieName: 'sid#projectname' }));
 ```
@@ -46,9 +53,9 @@ So cookie-name in browser will be set as `sid#projectname`. It's useful when mul
 
 ## Options
 
-+ redisOptions: configure redis, must be a array. ex: `[6379, 'localhost', {auth_pass: 'auth_pass'}]`
-+ cookieName: overwrite default cookie name, useful in multi products.
-+ expireTime: cookie expire time in browser / session expire time in redis. count with ms.
++ `redisOptions`: configure redis, must be a array. ex: `[6379, 'localhost', {auth_pass: 'auth_pass'}]`
++ `cookieName`: overwrite default cookie name, useful in multi products.
++ `expireTime`: cookie expire time in browser / session expire time in redis. count with ms.
 
 ## Run test
 
