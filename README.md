@@ -7,7 +7,7 @@ This is a node Express middleware to store session into redis.
 Install with:
 
 ```sh
-$npm install node-redis-session
+	$npm install node-redis-session
 ```
 
 ## Usage
@@ -60,7 +60,7 @@ So cookie-name in browser will be set as `sid#projectname`. It's useful when mul
 ## Run test
 
 ```sh
-$npm test
+	$npm test
 ```
 
 ### [MIT Licensed](LICENSE)
