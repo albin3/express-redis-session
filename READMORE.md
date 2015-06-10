@@ -2,80 +2,40 @@ Node_Express_Redis_Session
 ==========================
 [![Build Status](https://travis-ci.org/albin3/Node_Express_Redis_Session.svg?branch=master)](https://travis-ci.org/albin3/Node_Express_Redis_Session)
 
+## cookie-session简介
 
-###使用
-	npm install node-redis-session
++ `Cookie`: HTTP是一种无状态协议，用Cookie来区分不同的客户端。在协议中通过headers里的`‘cookies’`、`‘set-cookie’`来设置和获取。
++ `Session`: 当客户的信息涉及到隐私，不能传递到客户端时，服务器端自己通过为每个用户开辟一个空间，存储这些隐私信息，而Express的Session直接存在内存里。
 
-###简介
+## Session存在内存里的问题
 
-> 将`Session`存储在缓存中，在web服务中有诸多的优势，比如重启服务时`Session`不丢失，分布式部署web服务器时负载均衡的时候不用考虑`状态一致`的问题。
++ `状态丢失`: 重启服务器或宕机会导致状态丢失；
++ `状态依赖`: 导致同一个用户永远只能访问同一个服务，不然无法找到当前状态；
 
-###制作原因
+## Redis-Session解决方案的优势
 
-* `Nodejs+Express`提供的`Session`机制有时不可靠（`Session`会出现没有值的情况）；
-* 金融项目自己尽量多的东西自己掌控；
-* `Session`如果放在内存中，当程序调试重启时，`Session`会丢失，放在`Redis`中可避免；
++ `持久化`: Redis数据落盘保证宕机或重启服务器时能找回状态(可设置落盘频率调优)；
++ `服务状态独立`: 服务做到无状态运行，简单的堆机器可以解决用户量上升需求；
++ `过期控制`: 用redis自带的Expire，可以方便得设置过期节约内存使用；
++ `调试方便`: 从Redis Command Line中可以查询、备份状态；
 
-###设计
+## Express-Redis-Session设计
 
-1. 每个浏览器初次链接生成一个`session_id`；
-2. 利用浏览器本地的`Cookie`存储`session_id`；
-3. 在`Redis`中对应一个以`session_id`为键的`hmap`用于存储这次连接的所有信息；
+### Cookie-Session-Redis设计
+1. 在客户端Cookie中存入新键值对: "cookieName=SessionId"；
+2. 在Redis中，存入新的键值对作为Session: "SessionId: {username: anonymos, age: 18}"；
 
-###使用
+### Express-Middleware实现
+1. 请求到达时，从Redis中取得Session并存入"req.session"，方便使用（用Middleware轻松实现）；
+2. 请求结束时，将"req.session"存回到Redis，保持状态（查看文档，劫持res.end函数实现）；
 
-	var express = require('express');
-	var get_redis_session = require('./lib/').get_redis_session;
-	var app     = express();
-	
-	app.use(...);
-	
-	app.use(bodyParser());
-	app.use(cookieParser());
-	app.use(get_redis_session("default"));
-	
-	app.use(...);
-	app.listen(3000);
 
-###具体实现
+## 扩展参数(实践中遇到的问题)
 
-exports.get_redis_session = function(key) {
-  if (!key) {
-    key = "Anonymous";
-  }
-  var rand = Math.floor(Math.random()*100);
-  key = key + rand;
++ `redisOptions`: 配置Redis连接设置，保证连接到Redis；
++ `cookieName`: 由于Cookie只是域名绑定，端口不绑定，保证多项目同时使用这个库时，会导致CookieName冲突，使用这个参数配置不同的CookieName；
++ `expireTime`: Cookie/Session过期时间；
 
-  return function(req, res, next) {
-    var session_id = "sid"+rand;
-    if (!req.cookies[session_id]) {
-      var time = new Date().getTime().toString();
-      var salt = 'mysalt'+Math.floor(Math.random()*100);
-      var hash = node_hash.md5(time, salt);
-      res.cookie(session_id, hash);
-      req.cookies[session_id] = hash;
-    }
+## 安装使用
 
-    var session_key = req.cookies[session_id];
-    redis_cli.get(session_key, function(err, session_value) {
-      if (!session_value) 
-        req.session = {};
-      else 
-        req.session = JSON.parse(rst);
-
-      res._resend = res.end;
-      res.end = function(params) {
-        res._resend(params);
-
-        if(!req.session) req.session = {};
-        redis_cli.set(session_key, JSON.stringify(req.session));
-        redis_cli.expire(session_key, 60*60);
-      }
-      next();
-    });
-  }
-};
-
-<div class="footer">
-     &copy; 2014 Zeng Albin. binwei.zeng3@gmail.com
-</div>
+[node-redis-session](https://github.com/albin3/Node_Express_Redis_Session)
