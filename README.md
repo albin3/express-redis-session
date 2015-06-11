@@ -14,25 +14,26 @@ $npm install node-redis-session
 
 ```js
 
-	var express = require('express');
-	var cookieParser = require('cookie-parser');
-	var redisSession = require('node-redis-session');
-	var app = express();
+var express = require('express');
+var cookieParser = require('cookie-parser');
+var redisSession = require('node-redis-session');
+var app = express();
+
+app.use(cookieParser());
+app.use(redisSession());
+
+app.get('/', function(req, res) {
 	
-	app.use(cookieParser());
-	app.use(redisSession());
-	
-	app.get('/', function(req, res) {
-		
-		//just use req.session and it will be there,
-		//when next same browser request come.
-		if (!req.session.user)
-		  req.session.user = {name: 'anonymous'};
-		  
-		res.end('hello '+req.session.user.name);
-	});
-	
-	app.listen(3000);
+  //just use req.session and it will be there,
+  //when next same browser request come.
+  if (!req.session.user) {
+    req.session.user = {name: 'anonymous'};
+  }
+    
+  res.end('hello '+req.session.user.name);
+});
+
+app.listen(3000);
 ```
 Session will be store in redis, as JSON.stringify(req.session). You can find it with redis command line.
 
@@ -41,15 +42,15 @@ Other way to establish a redisSession is:
 
 ```js
 
-	var express = require('express');
-	var cookieParser = require('cookie-parser');
-	var redisSession = require('node-redis-session');
-	var app = express();
+var express = require('express');
+var cookieParser = require('cookie-parser');
+var redisSession = require('node-redis-session');
+var app = express();
 
-	app.use(cookieParser());
-	app.use(redisSession({ cookieName: 'sid#projectname' }));
+app.use(cookieParser());
+app.use(redisSession({ cookieName: 'mySessionid' }));
 ```
-So cookie-name in browser will be set as `sid#projectname`. It's useful when multi projects are use redisSession. Do this and escape projects from use same cookie-name.
+So cookie-name in browser will be set as `mySessionid`. It's useful when multi projects are use redisSession. Do this and escape projects from use same cookie-name.
 
 ## Options
 
