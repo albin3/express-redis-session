@@ -36,7 +36,6 @@ Node_Express_Redis_Session
 + `cookieName`: 由于Cookie只是域名绑定，端口不绑定，保证多项目同时使用这个库时，会导致CookieName冲突，使用这个参数配置不同的CookieName；
 + `expireTime`: Cookie/Session过期时间；
 
-
 ## 安装使用
 
 [node-redis-session](https://github.com/albin3/Node_Express_Redis_Session)
