@@ -12,7 +12,7 @@ var cookie;
 describe('#nodeRedisSession', function() {
 
   //start server
-  before(function() {
+  before(function(done) {
 
     var app = express();
     app.use(redisSession({ 
@@ -36,6 +36,10 @@ describe('#nodeRedisSession', function() {
     });
 
     app.listen(3009);
+
+    setTimeout(function() {
+      done();
+    }, 300);
   });
 
   it('first request', function(done) {
