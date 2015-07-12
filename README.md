@@ -1,6 +1,6 @@
 Node-Express-Redis-Session
 ====
-[![Build Status](https://travis-ci.org/albin3/Node_Express_Redis_Session.svg?branch=master)](https://travis-ci.org/albin3/Node_Express_Redis_Session)
+[![Build Status](https://travis-ci.org/albin3/express-redis-session.svg?branch=master)](https://travis-ci.org/albin3/express-redis-session)
 
 This is a node Express middleware to store session into redis.
 
