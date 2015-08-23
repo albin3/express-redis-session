@@ -7,7 +7,7 @@
     "redis": "~0.11.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "1.11.0"
   },
   "keywords": [
     "express",
