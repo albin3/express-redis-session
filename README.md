@@ -58,10 +58,15 @@ So cookie-name in browser will be set as `mySessionid`. It's useful when multi p
 + `cookieName`: overwrite default cookie name, useful in multi products.
 + `expireTime`: cookie expire time in browser / session expire time in redis. count with ms.
 
+## Contributors
+
+- <a href="https://github.com/albin3">albin3</a>
+- <a href="https://github.com/ezeq-10">ezeq-10</a>
+
 ## Run test
 
 ```sh
 $npm test
 ```
 
-### [MIT Licensed](LICENSE)
+## [MIT Licensed](LICENSE)
