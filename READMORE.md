@@ -38,4 +38,4 @@ Node_Express_Redis_Session
 
 ## 安装使用
 
-[node-redis-session](https://github.com/albin3/Node_Express_Redis_Session)
+[node-redis-session](https://github.com/albin3/express-redis-session)
