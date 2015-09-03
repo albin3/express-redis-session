@@ -1,4 +1,4 @@
-Node-Express-Redis-Session
+Express-Redis-Session
 ====
 [![Build Status](https://travis-ci.org/albin3/express-redis-session.svg?branch=master)](https://travis-ci.org/albin3/express-redis-session)
 
