@@ -23,10 +23,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/albin3/Node_Express_Redis_Session.git"
+    "url": "https://github.com/albin3/express-redis-session.git"
   },
   "bugs": {
-    "url": "https://github.com/albin3/Node_Express_Redis_Session/issues"
+    "url": "https://github.com/albin3/express-redis-session/issues"
   },
-  "homepage": "https://github.com/albin3/Node_Express_Redis_Session"
+  "homepage": "https://github.com/albin3/express-redis-session"
 }

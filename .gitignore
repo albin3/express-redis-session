@@ -3,3 +3,4 @@
 npm-debug.log
 *.rdb
 *.swp
+.DS_Store
