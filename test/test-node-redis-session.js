@@ -13,7 +13,6 @@ describe('#nodeRedisSession', function() {
 
   //start server
   before(function(done) {
-
     var app = express();
     app.use(redisSession({ 
       redisOptions: [ 6379, 'localhost', {} ], 
