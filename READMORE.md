@@ -1,6 +1,6 @@
-Node_Express_Redis_Session
+node-redis-session
 ==========================
-[![Build Status](https://travis-ci.org/albin3/Node_Express_Redis_Session.svg?branch=master)](https://travis-ci.org/albin3/Node_Express_Redis_Session)
+[![Build Status](https://travis-ci.org/albin3/express-redis-session.svg?branch=master)](https://travis-ci.org/albin3/express-redis-session)
 
 ## cookie-session简介
 
@@ -39,3 +39,9 @@ Node_Express_Redis_Session
 ## 安装使用
 
 [node-redis-session](https://github.com/albin3/express-redis-session)
+
+## 感谢
+
+参与思路的讨论与建议
+
+- <img src="https://avatars2.githubusercontent.com/u/1445522?v=3&s=192"/ width="32"> [丁文森](/vincenting)
