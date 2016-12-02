@@ -1,6 +1,6 @@
 {
   "name": "node-redis-session",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "express middleware to save session with redis",
   "main": "./lib/index",
   "dependencies": {
