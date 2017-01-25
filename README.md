@@ -1,6 +1,9 @@
 Express-Redis-Session
 ====
-[![Build Status](https://travis-ci.org/albin3/express-redis-session.svg?branch=master)](https://travis-ci.org/albin3/express-redis-session)
+
+[![Build Status][travis-image]][travis-url]
+[![NPM Version][npm-image]][npm-url]
+[![NPM Downloads][downloads-image]][downloads-url]
 
 This is a node Express middleware to store session into redis.
 
@@ -70,3 +73,10 @@ $npm test
 ```
 
 ## [MIT Licensed](LICENSE)
+
+[travis-image]: https://api.travis-ci.org/albin3/express-redis-session.svg
+[travis-url]: https://travis-ci.org/albin3/express-redis-session
+[npm-image]: https://img.shields.io/npm/v/node-redis-session.svg
+[npm-url]: https://npmjs.org/package/node-redis-session
+[downloads-image]: https://img.shields.io/npm/dm/node-redis-session.svg
+[downloads-url]: https://npmjs.org/package/node-redis-session
