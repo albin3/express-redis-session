@@ -58,8 +58,11 @@ So cookie-name in browser will be set as `mySessionid`. It's useful when multi p
 ## Options
 
 + `redisOptions`: configure redis, must be a array. ex: `[6379, 'localhost', {auth_pass: 'auth_pass'}]`
++ `redisClient`: redis client, if exists ignore redisOptions.
 + `cookieName`: overwrite default cookie name, useful in multi products.
 + `expireTime`: cookie expire time in browser / session expire time in redis. count with ms.
++ `cacheCookieName`: multi application use sso will hold same session. and use this to hold a cache in single app. usage: `req.cache`.
++ `cookieOptions`: see third param in http://expressjs.com/zh-cn/api.html (search res.cookie).  // Object.assign({expires, httpOnly}, cookieOptions);
 
 ## Contributors
 
