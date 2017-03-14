@@ -2,11 +2,10 @@
 //Albin Zeng
 //2015-06-05
 var http = require('http');
-var server = http.createServer();
 
 function express() {
-
   //express的中间件,第一个函数为CookieParser功能
+  var server = http.createServer();
   server.middleware = [cookieParser];
 
   //实现express的use功能
@@ -35,7 +34,6 @@ function express() {
 
 //cookieParser通过分析headers解析为cookie
 function cookieParser(req, res, next) {
-
   var headers = req.headers || {};
   var cookie = headers['cookie'] || '';
   var listCookies = cookie.split(';');
