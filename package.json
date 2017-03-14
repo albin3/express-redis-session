@@ -5,7 +5,8 @@
   "main": "./lib/index",
   "dependencies": {
     "debug": "2.2.0",
-    "ioredis": "2.5.0"
+    "ioredis": "2.5.0",
+    "object.assign": "4.0.4"
   },
   "devDependencies": {
     "mocha": "1.11.0",
