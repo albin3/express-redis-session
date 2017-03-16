@@ -297,7 +297,7 @@ describe('#getRedisClient support', function() {
       return redisClient;
     }
     app.use(redisSession({ 
-      getRedisClient,
+      getRedisClient: getRedisClient,
       cookieName: 'sid#test',
       cacheCookieName: 'sid#cache',
       expireTime: 24*3600*1000 
