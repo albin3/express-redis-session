@@ -29,19 +29,8 @@ node-redis-session
 1. 请求到达时，从Redis中取得Session并存入"req.session"，方便使用（用Middleware轻松实现）；
 2. 请求结束时，将"req.session"存回到Redis，保持状态（查看文档，劫持res.end函数实现）；
 
-
 ## 扩展参数(实践中遇到的问题)
 
 + `redisOptions`: 配置Redis连接设置，保证连接到Redis；
 + `cookieName`: 由于Cookie只是域名绑定，端口不绑定，保证多项目同时使用这个库时，会导致CookieName冲突，使用这个参数配置不同的CookieName；
 + `expireTime`: Cookie/Session过期时间；
-
-## 安装使用
-
-[node-redis-session](https://github.com/albin3/express-redis-session)
-
-## 感谢
-
-参与思路的讨论与建议
-
-- <img src="https://avatars2.githubusercontent.com/u/1445522?v=3&s=192"/ width="32"> [丁文森](/vincenting)
