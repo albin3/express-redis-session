@@ -1,6 +1,7 @@
 /node_modules/
 /static/
 npm-debug.log
+package-lock.json
 *.rdb
 *.swp
 .DS_Store

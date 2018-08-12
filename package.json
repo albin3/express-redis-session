@@ -1,16 +1,16 @@
 {
   "name": "node-redis-session",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "express middleware to save session with redis",
   "main": "./lib/index",
   "dependencies": {
-    "debug": "2.2.0",
-    "ioredis": "2.5.0",
-    "object.assign": "4.0.4"
+    "debug": "^2.6.9",
+    "ioredis": "^2.5.0",
+    "object.assign": "^4.0.4"
   },
   "devDependencies": {
-    "mocha": "1.11.0",
-    "debug": "2.2.0"
+    "mocha": "^1.11.0",
+    "debug": "^2.6.9"
   },
   "keywords": [
     "express",
